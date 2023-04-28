@@ -20,6 +20,10 @@ Finally, the bash script provided in [code/python/scripts/topological_clustering
 
 **Note**: you need to update the path in this script to appropriately link to the directory where the connectome topologies are stored.
 
-# Evaluating results
+# Evaluating results and generating plots
 
-Once the scripts finish running, about 1.3 TB of data will be generated in the output directory that contains the results of performing PALM with and without TCS on different tasks, sample sizes, and thresholds. Next, we used scripts in a jupyter notebook to analyze these results. An HTML view of this notebook is available [here](...).
+Once the scripts finish running, about 1.3 TB of data will be generated in the output directory that contains the results of performing PALM with and without TCS on different tasks, sample sizes, and thresholds. Next, we used python scripts written in Jupyter notebooks to analyze the results. For every notebook an HTML view is made available to present the scripts
+
+- The first notebook, [TCS_01_loading_PALM_results](...), was used to convert outputs of FSL PALM into a binary format to be efficiently read by Python's NumPy package.
+
+- The second notebook, [TCS_02_putative_ground_truth](code/python/notebooks/ipynb/TCS_02_putative_ground_truth.ipynb), contains the scripts that can be used to generate the putative ground truth effects from all HCP participants. This notebook also contains additional scripts used to generate some of the plots from the manuscript.

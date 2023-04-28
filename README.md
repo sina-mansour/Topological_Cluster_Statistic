@@ -4,7 +4,7 @@
 
 This repository contains scripts, examples, and accompanying results and data for the publication titled **"Topological Cluster Statistic (TCS): Towards structural-connectivity-guided fMRI cluster enhancement"** currently available as a preprint at Research Square:
 
-[![DOI:10.21203/rs.3.rs-2059418/v1](http://img.shields.io/badge/DOI-10.21203/rs.3.rs-2059418/v1-B31B1B.svg)](https://doi.org/10.21203/rs.3.rs-2059418/v1)
+[![DOI:10.21203/rs.3.rs-2059418/v1](http://img.shields.io/badge/DOI-10.21203/rs.3.rs–2059418/v1-B31B1B.svg)](https://doi.org/10.21203/rs.3.rs-2059418/v1)
 
 *Sina Mansour L., Caio Seguin, Anderson Winkler et al. Topological Cluster Statistic (TCS): Towards structural-connectivity-guided fMRI cluster enhancement, 15 September 2022, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-2059418/v1](https://doi.org/10.21203/rs.3.rs-2059418/v1)*
 
