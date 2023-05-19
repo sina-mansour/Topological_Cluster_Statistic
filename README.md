@@ -42,7 +42,7 @@ For more information, make sure to check out [this explanation document](example
 
 ## Beta release
 
-The PALM code will be merged to PALM soon. However, for the sake of full transparency and reproducibility of results, a compressed archive of the scripts used to conduct the evaluations in the manuscript is provided [here](...).
+As of yet (May 2023) TCS is not yet officially released on PALM. TCS will be merged to a future PALM release soon. However, for the sake of full transparency and reproducibility of results, a compressed archive of the PALM scripts used to conduct the evaluations in the manuscript is provided [here](...).
 
 !TODO!
 
