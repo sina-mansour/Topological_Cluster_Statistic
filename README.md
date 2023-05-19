@@ -84,6 +84,14 @@ Then check out the examples [here](mapping_connectomes.md) to find out how you c
 
 ## Code to reproduce
 
-If you are interested in reproducing the evaluations performed in the manuscript, conduct a similar analytical procedure, or reproduce the visualization of our findings, you could check out the example scripts described [here](reproduce_our_results.md).
+If you are interested in reproducing the evaluations performed in the manuscript, conduct a similar analytical procedure, or reproduce the visualization of our findings, you could check out the example scripts described [here](reproduce_our_results.md). There, you will find descriptions along with accompanying Jupyter notebooks that can be used to reproduce all the findings of our study.
 
-!TODO!
+---
+
+## Request for features / bug fixes
+
+If you encounter any bugs, or would like new features to be implemented for TCS, make sure to create an issue in this repository.
+
+This repository was created and is maintained by:
+
+[Sina Mansour L.](https://sina-mansour.github.io/) <sina.mansour.lakouraj@gmail.com>
