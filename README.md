@@ -42,18 +42,28 @@ For more information, make sure to check out [this explanation document](example
 
 ## Beta release
 
-As of yet (May 2023) TCS is not yet officially released on PALM. TCS will be merged to a future PALM release soon. However, for the sake of full transparency and reproducibility of results, a compressed archive of the PALM scripts used to conduct the evaluations in the manuscript is provided [here](...).
-
-!TODO!
+As of yet (May 2023) TCS is not officially released for PALM. TCS will be merged to a future PALM release soon. However, for the sake of full transparency and reproducibility of results, a compressed archive of the PALM scripts used to conduct the evaluations in the manuscript is provided [here](code/matlab/PALM/palm-alpha120rc3.zip).
 
 ---
 
 ## HCP group connectomes
 
-To use TCS with PALM, you also need a file that describes the topological structure that is used for cluster correction. We have provided example topological structures for the HCP young adult cohort in two alternative spaces (for surface based and volumetric analyses):
+To use TCS with PALM, you also need files that describe the topological structure to be used for cluster correction. We have provided example topological structures for the HCP young adult cohort in two alternative spaces (for surface based and volumetric analyses):
 
-1. The fs-LR 32k cifti space
+1. The fs-LR 32k cifti space:
+
+   - For cifti files, the topology is explained by a single file containing the adjacency structure in a sparse format, ready to be used by the PALM scripts. A topology built from a high-resolution group-level consensus connectome is made available [here](data/consensus_topology/hybrid_adjacency_clnorm.csv).
+   - An alternative topology is also provided for cifti files that only contains spatial connections (for vertices: vertices sharing a face, for voxels: 6 directly neighboring voxels). This topology file is only included for the purpose of replicability as it is used by some of the jupyter notebooks. This spatial topology is available [here](data/consensus_topology/local_adjacency.csv) in a format that can be directly used with PALM.
+
 2. The MNI152 2mm T1 space
+   - For volumetric images, PALM requires two sets of files to be provided:
+     - A file describing the high-resolution topology describing the anatomical network connecting voxels based on structural connectivity. This files should be provided in a sparse adjacency matrix format readable by PALM. An example volumetric topology derived from a high-resolution group-level consensus connectome of the HCP young adult data. The volumetric connectome has a considerably larger file size and was thus shared over a cloud storage accessible from [here](https://cloudstor.aarnet.edu.au/plus/s/0ATqinOCnWma204).
+     - In addition to the adjacency matrix, another file is needed to tell PALM the order of voxels in the adjacency matrix. For this purpose, a simple nifti image file is provided [here](data/consensus_topology/node_indices_mat_MNI152_T1_2mm_brain.nii).
+   - Similarly an alternative topology is also provided that only contains spatial neighborhoods (6 neighbors). This file is available from [here](https://cloudstor.aarnet.edu.au/plus/s/qUbxw3lQq6MyvWB).
+   - The T1 brain mask is also available form [here](data/consensus_topology/MNI152_T1_2mm_liberal.nii) which can be used in combination with the volumetric files to limit the analysis to a liberal mask of cortical gray matter.
+   - The T1 file used for this standard space is additionally available from [here](data/consensus_topology/MNI152_T1_2mm.nii.gz).
+
+Please note that descriptions about how these files can be used with PALM are provided in [this explanation document](example_usage.md).
 
 ---
 
