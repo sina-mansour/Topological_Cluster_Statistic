@@ -32,9 +32,17 @@ This repository contains:
 
 ## Example usage
 
-TCS is integrated with [FSL PALM](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM), so you can easily combine it with arbitrary designs most appropriate for your analyses. Here's a one-liner that performs TCS:
+TCS is integrated with [FSL PALM](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM), so you can easily combine it with arbitrary designs most appropriate for your analyses. Here's a PALM command that performs TCS:
 
-!TODO!
+```sh
+/<path-to-palm>/palm \
+    -d /<path-to-design>/design.csv \
+    -t /<path-to-contrast>/contrast.csv \
+    -i /<path-to-cifti>/merged.zstat1.dtseries.nii \
+    -adj /<path-to-adj>/hybrid_adjacency_clnorm.csv \
+    -Cstat topology -C 3.3 -ise -n 1000 -transposedata \
+    -o TCS_output -twotail -logp
+```
 
 For more information, make sure to check out [this explanation document](example_usage.md).
 

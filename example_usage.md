@@ -104,3 +104,60 @@ Notes:
 - The `-twotail` option tells PALM to run a two-tailed test. This is recommended ans TCS can possibly cluster negative and positive effects in the same cluster.
 - The `-logp` option tells PALM to store the output p-values as -log10(p). (This option is strongly recommended for PALM)
 - The `-accel tail` option tells PALM to run an acceleration method to fit a generalised Pareto distribution, modelling the tail of the permutation distribution.
+
+---
+
+## Running Topological Clustering with Python:
+
+As can be seen in multiple manuscript reporoducing notebooks (e.g. [this one](/home/sina/Documents/Research/Codes/TCS/code/python/notebooks/ipynb/TCS_17_brain_visualizations_single_case_CDT.ipynb)), you can run the topological clustering approach from within python. This can particularly be handy if you are aiming to visualize data-driven interpretations, or are trying to interpret results of previous group-level findings using TCS.
+
+Mainly, the following function performs topological clustering:
+
+```python
+# Importing required packages
+import numpy as np
+import scipy.sparse as sparse
+
+def get_all_cluster_extents(effect, effect_threshold, topological_connectivity, magnitude=True):
+    # first mask regions with weak effects
+    if magnitude:
+        suprathreshold_mask = sparse.diags((np.abs(effect) > effect_threshold).astype(float), 0)
+    else:
+        suprathreshold_mask = sparse.diags(((effect) > effect_threshold).astype(float), 0)
+
+    # update connectivity to keep masked edges only
+    thresholded_connectivity = (suprathreshold_mask.dot(topological_connectivity.dot(suprathreshold_mask))).tocsr()
+
+    # compute all connected components
+    n_components, labels = sparse.csgraph.connected_components(csgraph=thresholded_connectivity, directed=False, return_labels=True)
+
+    # count the labels and report clusters
+    unique, counts = np.unique(labels, return_counts=True)
+    label_counts = dict(zip(unique, counts))
+
+    label_replace = {x: (x if (label_counts[x] > 1) else -1) for x in label_counts}
+
+    cluster_labels = [label_replace[x] for x in labels]
+    cluster_size = {x: label_counts[x] for x in label_counts if (label_counts[x] > 1)}
+
+    final_label_replace = {x: i for (i, x) in enumerate(np.unique(cluster_labels))}
+    # final_label_replace[-1] = -1
+    final_cluster_size = {final_label_replace[x]: cluster_size[x] for x in cluster_size}
+    final_cluster_labels = [final_label_replace[x] for x in cluster_labels]
+
+    return (final_cluster_size, final_cluster_labels)
+
+```
+
+The function takes the following arguments:
+
+- `effect`: This is a numpy vector containing the observed group-level voxelwise/vertexwise effects. The effects can be Cohen's d effect sizes, z-statistics, or t-statistics. (A higher value should mean more significant, so in case of p-values, provide `-log10(p)` instead)
+- `effect_threshold`: This is similar to the cluster-defining threshold, the algorithm tries to cluster effects larger than this value.
+- `topological_connectivity`: This is a sparse adjacency matrix (`scipa.sparse.csr_matrix`) that describes the topology to be used for clustering (e.g. this can be a high-resolution connectome).
+- `magnitude`: This is a boolean value. If `True`, then a two-tailed test will be evaluated to cluster all effects (positive or negative). Otherwise, only effects greater than the threshold will be clustered.
+
+After execution the function returns a tuple containing the following:
+- `final_cluster_size`: a dictionary containing the number of voxels/vertices belonging to each cluster
+- `final_cluster_labels`: a vector (same shape as the `effect` vector) containing lables of all voxels/vertices. (Note: voxels/vertices that do not belong to any suprathreshold cluster will be labeled as `-1`)
+
+Make sure to check out the [notebooks for reproducing our results](reproduce_our_results.md) for examples of how this python function can be used to aid interpretations.
