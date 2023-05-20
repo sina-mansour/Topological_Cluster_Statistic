@@ -61,13 +61,13 @@ To use TCS with PALM, you also need files that describe the topological structur
 1. The fs-LR 32k cifti space:
 
    - For cifti files, the topology is explained by a single file containing the adjacency structure in a sparse format, ready to be used by the PALM scripts. A topology built from a high-resolution group-level consensus connectome is made available [here](data/consensus_topology/hybrid_adjacency_clnorm.csv).
-   - An alternative topology is also provided for cifti files that only contains spatial connections (for vertices: vertices sharing a face, for voxels: 6 directly neighboring voxels). This topology file is only included for the purpose of replicability as it is used by some of the jupyter notebooks. This spatial topology is available [here](data/consensus_topology/local_adjacency.csv) in a format that can be directly used with PALM.
+   - An alternative topology is also provided for cifti files that only contains spatial connections (for vertices: vertices sharing a face, for voxels: 26 neighboring voxels). This topology file is only included for the purpose of replicability as it is used by some of the jupyter notebooks. This spatial topology is available [here](data/consensus_topology/local_adjacency.csv) in a format that can be directly used with PALM.
 
 2. The MNI152 2mm T1 space
    - For volumetric images, PALM requires two sets of files to be provided:
      - A file describing the high-resolution topology describing the anatomical network connecting voxels based on structural connectivity. This files should be provided in a sparse adjacency matrix format readable by PALM. An example volumetric topology derived from a high-resolution group-level consensus connectome of the HCP young adult data. The volumetric connectome has a considerably larger file size and was thus shared over a cloud storage accessible from [here](https://cloudstor.aarnet.edu.au/plus/s/0ATqinOCnWma204).
      - In addition to the adjacency matrix, another file is needed to tell PALM the order of voxels in the adjacency matrix. For this purpose, a simple nifti image file is provided [here](data/consensus_topology/node_indices_mat_MNI152_T1_2mm_brain.nii).
-   - Similarly an alternative topology is also provided that only contains spatial neighborhoods (6 neighbors). This file is available from [here](https://cloudstor.aarnet.edu.au/plus/s/qUbxw3lQq6MyvWB).
+   - Similarly an alternative topology is also provided that only contains spatial neighborhoods (26 neighbors). This file is available from [here](https://cloudstor.aarnet.edu.au/plus/s/qUbxw3lQq6MyvWB).
    - The T1 brain mask is also available form [here](data/consensus_topology/MNI152_T1_2mm_liberal.nii) which can be used in combination with the volumetric files to limit the analysis to a liberal mask of cortical gray matter.
    - The T1 file used for this standard space is additionally available from [here](data/consensus_topology/MNI152_T1_2mm.nii.gz).
 
@@ -85,8 +85,6 @@ So you might have had a closer look at the manuscript and realized that you can 
 - Want to use a resting-state functional connectome to explore capabilities of TCS with a different conceptual assumption (to group functionally linked regions in a cluster)
 
 Then check out the examples [here](mapping_connectomes.md) to find out how you could provide your alternative topology to TCS.
-
-!TODO!
 
 ---
 

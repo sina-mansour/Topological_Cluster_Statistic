@@ -7,7 +7,7 @@ Here you'll find explanations describing how to:
 
 ---
 
-## Running TCS with PALM:
+## Running TCS with PALM
 
 TCS can be used in conjunction with PALM to run nonparametric statistical inference on either:
 
@@ -18,7 +18,7 @@ For an overview of the wide range of capabilities of PALM in creating alternativ
 
 ---
 
-### TCS with PALM for CIFTI data:
+### TCS with PALM for CIFTI data
 
 To run a nonparametric statistical inference with TCS & PALM, you would need the following:
 
@@ -59,7 +59,7 @@ Notes:
 
 ---
 
-### TCS with PALM for NIfTI data:
+### TCS with PALM for NIfTI data
 
 To run a nonparametric statistical inference with TCS & PALM for volumetric NIfTI data, You would need the following:
 
@@ -107,7 +107,7 @@ Notes:
 
 ---
 
-## Running Topological Clustering with Python:
+## Running Topological Clustering with Python
 
 As can be seen in multiple manuscript reporoducing notebooks (e.g. [this one](/home/sina/Documents/Research/Codes/TCS/code/python/notebooks/ipynb/TCS_17_brain_visualizations_single_case_CDT.ipynb)), you can run the topological clustering approach from within python. This can particularly be handy if you are aiming to visualize data-driven interpretations, or are trying to interpret results of previous group-level findings using TCS.
 
